@@ -1,8 +1,13 @@
 package iteration
 
-func Repeat(toBeRepeated string) string {
+const repeatCount = 5
+
+func Repeat(toBeRepeated string, repeatAmount int) string {
 	var concatenated string
-	for i := 0; i < 5; i++ {
+	if repeatAmount == 0 {
+		repeatAmount = repeatCount
+	}
+	for i := 0; i < repeatAmount; i++ {
 		concatenated += toBeRepeated
 	}
 	return concatenated
