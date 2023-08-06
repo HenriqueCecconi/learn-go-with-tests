@@ -2,8 +2,9 @@ package structsmethodinterfaces
 
 import "testing"
 
-func TestRectanglePerimeter(t *testing.T) {
-	got := RectanglePerimeter(10.0, 10.0)
+func TestPerimeter(t *testing.T) {
+	rectangle := Rectangle{10.0, 10.0}
+	got := Perimeter(rectangle)
 	want := 40.0
 
 	if got != want {
@@ -11,8 +12,9 @@ func TestRectanglePerimeter(t *testing.T) {
 	}
 }
 
-func TestRectangleArea(t *testing.T) {
-	got := RectangleArea(20.0, 10.0)
+func TestArea(t *testing.T) {
+	rectangle := Rectangle{20.0, 10.0}
+	got := Area(rectangle)
 	want := 200.0
 
 	if got != want {
