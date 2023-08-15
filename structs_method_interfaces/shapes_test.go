@@ -3,43 +3,39 @@ package structsmethodinterfaces
 import "testing"
 
 func TestPerimeter(t *testing.T) {
+	checkPerimeter := func(t *testing.T, shape Shape, want float64) {
+		t.Helper()
+		perimeter := shape.Perimeter()
+		if perimeter != want {
+			t.Errorf("Got %g, want %g", perimeter, want)
+		}
+	}
 	t.Run("rectangles perimeter", func(t *testing.T) {
 		rectangle := Rectangle{20.0, 10.0}
-		got := rectangle.Perimeter()
 		want := 60.0
-
-		if got != want {
-			t.Errorf("Got %g, want %g", got, want)
-		}
+		checkPerimeter(t, rectangle, want)
 	})
 	t.Run("circles perimeter", func(t *testing.T) {
 		circle := Circle{10.0}
-		got := circle.Perimeter()
 		want := 62.83185307179586
-
-		if got != want {
-			t.Errorf("Got %g, want %g", got, want)
-		}
+		checkPerimeter(t, circle, want)
 	})
 }
 
 func TestArea(t *testing.T) {
-	t.Run("rectangles area", func(t *testing.T) {
-		rectangle := Rectangle{20.0, 10.0}
-		got := rectangle.Area()
-		want := 200.0
-
-		if got != want {
-			t.Errorf("Got %g, want %g", got, want)
+	checkArea := func(t *testing.T, shape Shape, want float64) {
+		t.Helper() // Specify this is a helper function
+		area := shape.Area()
+		if want != area {
+			t.Errorf("Got %g, want %g", area, want)
 		}
+	}
+	t.Run("rectangles area", func(t *testing.T) {
+		rectangle := Rectangle{12, 6}
+		checkArea(t, rectangle, 72.0)
 	})
 	t.Run("circles area", func(t *testing.T) {
 		circle := Circle{10.0}
-		got := circle.Area()
-		want := 314.1592653589793
-
-		if got != want {
-			t.Errorf("Got %g, want %g", got, want)
-		}
+		checkArea(t, circle, 314.1592653589793)
 	})
 }
